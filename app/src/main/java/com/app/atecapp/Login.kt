@@ -76,6 +76,9 @@ class Login : AppCompatActivity() {
             } catch (e: JSONException) {
                 e.printStackTrace()
                 Log.e("LoginError", "Error al procesar la respuesta JSON", e)
+                Log.e("LoginError", "Error al procesar la respuesta JSON", e)
+                Log.e("LoginError", "Error al procesar la respuesta JSON", e)
+                Log.e("LoginError", "Error al procesar la respuesta JSON", e)
                 Toast.makeText(this, "Error al procesar la respuesta", Toast.LENGTH_SHORT).show()
             }
 
