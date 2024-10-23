@@ -5,15 +5,45 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E4E1E1"
     tools:context=".MainActivity">
 
+    <!-- Botón de cerrar sesión -->
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:text="X"
+        android:backgroundTint="#A80101"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"/>
+
+    <!-- TextView de bienvenida -->
     <TextView
+        android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Bienvenido a ATEC App!"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <!-- Barra de búsqueda usando SearchView -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:iconifiedByDefault="false"
+        android:queryHint="Buscar..."
+        app:background="@android:color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

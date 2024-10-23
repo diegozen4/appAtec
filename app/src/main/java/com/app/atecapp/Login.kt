@@ -1,5 +1,6 @@
 package com.app.atecapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -65,19 +66,27 @@ class Login : AppCompatActivity() {
                 val message = jsonResponse.getString("message")
 
                 if (status == "success") {
+                    val rol = jsonResponse.getString("rol") // Obtener el rol del JSON
                     Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show()
-                    Log.d("LoginStatus", "Login exitoso")
-                    // Aquí podrías redirigir a otra actividad
-                } else {
+
+                    // Guardar el rol en SharedPreferences
+                    val sharedPreferences = getSharedPreferences("ATECAppPrefs", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("user_role", rol)
+                    editor.apply()
+
+                    // Redirigir a MainActivity
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish() // Finalizar la actividad de inicio de sesión
+                }
+                else {
                     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                     Log.d("LoginStatus", "Error: $message")
                 }
 
             } catch (e: JSONException) {
                 e.printStackTrace()
-                Log.e("LoginError", "Error al procesar la respuesta JSON", e)
-                Log.e("LoginError", "Error al procesar la respuesta JSON", e)
-                Log.e("LoginError", "Error al procesar la respuesta JSON", e)
                 Log.e("LoginError", "Error al procesar la respuesta JSON", e)
                 Toast.makeText(this, "Error al procesar la respuesta", Toast.LENGTH_SHORT).show()
             }
